@@ -151,8 +151,8 @@ class FileNameFormatter:
             ending = possible_id.group(1) + ending
             filename = filename[: possible_id.start()]
         max_path = self.max_path
-        max_file_part_length_chars = MAX_FILENAME_LENGTH - len(ending)
-        max_file_part_length_bytes = MAX_FILENAME_LENGTH - len(ending.encode("utf-8"))
+        max_file_part_length_chars = self.MAX_FILENAME_LENGTH - len(ending)
+        max_file_part_length_bytes = self.MAX_FILENAME_LENGTH - len(ending.encode("utf-8"))
         max_path_length = max_path - len(ending) - len(str(root)) - 1
 
         out = Path(root, filename + ending)
