@@ -30,6 +30,8 @@ class FileNameFormatter:
     WINDOWS_MAX_PATH_LENGTH = 260
     LINUX_MAX_PATH_LENGTH = 4096
 
+    MAX_FILENAME_LENGTH = 155
+
     def __init__(
         self,
         file_format_string: str,
@@ -149,8 +151,8 @@ class FileNameFormatter:
             ending = possible_id.group(1) + ending
             filename = filename[: possible_id.start()]
         max_path = self.max_path
-        max_file_part_length_chars = 255 - len(ending)
-        max_file_part_length_bytes = 255 - len(ending.encode("utf-8"))
+        max_file_part_length_chars = MAX_FILENAME_LENGTH - len(ending)
+        max_file_part_length_bytes = MAX_FILENAME_LENGTH - len(ending.encode("utf-8"))
         max_path_length = max_path - len(ending) - len(str(root)) - 1
 
         out = Path(root, filename + ending)
